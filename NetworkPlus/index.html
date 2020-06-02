@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/element-ui.css">
+  <link rel="stylesheet" href="style/main.css">
+
+  <title>Network+</title>
+</head>
+
+<body>
+  <div id="app">
+    <el-container>
+      <el-header>
+        <div style="display: inline-block;padding-right:17px">
+          <el-input placeholder="Search" v-model="search" prefix-icon="el-icon-search" size="small" clearable
+            style="width: 300px;" spellcheck="false"></el-input>
+        </div>
+        <div style="display: inline-block;">
+          <el-button-group>
+            <el-button size="small" :icon="pauseBtnStatus.icon" :title="pauseBtnStatus.title" @click="pauseBtnClicked"
+              ref="pauseBtn">
+            </el-button>
+            <el-button size="small" icon="el-icon-delete" title="Clear" @click="clearBtnClicked"></el-button>
+          </el-button-group>
+        </div>
+      </el-header>
+      <el-container>
+        <el-aside :width="asideWidth">
+          <el-table :data="searchedTableData" height="95%" highlight-current-row @row-click="tableRowClicked">
+            <div slot="empty">Recording network activity...<br>
+              Perform a request or hit <span style="font-weight: bold;">Ctrl</span> + <span
+                style="font-weight: bold;">R</span> to record the refresh.</div>
+            <el-table-column prop="name" label="Name" :show-overflow-tooltip="true">
+              <template slot-scope="scope">
+                <span :title="scope.row.request.url">{{scope.row.request.name}}</span>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-aside>
+        <el-main :style="panelStyle">
+          <el-tabs v-model="activeTab">
+            <el-tab-pane label="Headers" name="headers">
+              <el-collapse v-model="activeCollapses">
+                <el-collapse-item name="General">
+                  <template slot="title">
+                    <span class="colla">General</span>
+                  </template>
+                  <label>Request URL: </label><span contentEditable id="edit-url" v-text="url"
+                    spellcheck="false"></span><br>
+                  <label>Request Method: </label><span contentEditable id="edit-method" v-text="method"
+                    spellcheck="false"></span><br>
+                  <label>Status Code: </label><span>{{status}}</span>
+                </el-collapse-item>
+                <el-collapse-item title="Response Headers" name="Response Headers">
+                  <pre>{{responseHeader}}</pre>
+                </el-collapse-item>
+                <el-collapse-item title="Request Headers" name="Request Headers">
+                  <pre contentEditable id="edit-request-headers" v-text="requestHeader" spellcheck="false"></pre>
+                </el-collapse-item>
+                <el-collapse-item title="Request Payload" name="Request Payload">
+                  <pre contentEditable id="edit-request-body" v-text="requestPayload" spellcheck="false"></pre>
+                </el-collapse-item>
+              </el-collapse>
+            </el-tab-pane>
+            <el-tab-pane label="Preview" name="preview">
+              <pre style="font-size: 15px" v-html="preview"></pre>
+            </el-tab-pane>
+          </el-tabs>
+          <el-button type="primary" icon="el-icon-position" circle class="resend" @click="resendBtnClicked"
+            ref="resendBtn" title="Send"></el-button>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
+  <script src="js/lib/vue.min.js"></script>
+  <script src="js/lib/element-ui.js"></script>
+  <script type="module" src="js/modules/index.js"></script>
+
+</body>
+
+</html>

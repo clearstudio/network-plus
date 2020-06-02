@@ -1,0 +1,101 @@
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(144, 147, 153, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+html {
+  overflow: hidden;
+}
+
+html, body {
+  height: 100%;
+}
+
+#app, .el-container {
+  height: 95%;
+}
+
+.el-header {
+  height: 33px;
+  padding: 0;
+}
+
+.el-main {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 95%;
+}
+
+.json-key {
+  color: #792675;
+}
+
+.json-number {
+  color: #0D22AA;
+}
+
+.json-string {
+  color: #000000;
+}
+
+.json-boolean {
+  color: #0D22AA;
+}
+
+.json-null {
+  color: #666666;
+}
+
+label {
+  font-weight: 500;
+}
+
+pre {
+  overflow-y: auto;
+  font-family: none;
+}
+
+[contentEditable]:focus {
+  outline: none;
+}
+
+/* 表格只显示一行文字 */
+
+.el-tooltip__popper.is-dark {
+  display: none !important;
+}
+
+/* 面板标题 */
+
+.el-collapse-item__header {
+  font-weight: bold;
+}
+
+.el-tabs__header {
+  position: fixed;
+  z-index: 999;
+  background-color: white;
+  width: 100%;
+}
+
+.el-tabs__content {
+  padding-top: 39px;
+}
+
+.resend {
+  position: fixed !important;
+  right: 80px !important;
+  bottom: 80px !important;
+}
