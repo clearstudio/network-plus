@@ -14,11 +14,11 @@
   <div id="app">
     <el-container>
       <el-header>
-        <div style="display: inline-block;padding-right:17px">
+        <div style="display: inline-block;vertical-align: middle;padding-right:17px;">
           <el-input placeholder="Search" v-model="search" prefix-icon="el-icon-search" size="small" clearable
             style="width: 300px;" spellcheck="false"></el-input>
         </div>
-        <div style="display: inline-block;">
+        <div style="display: inline-block;vertical-align: middle;">
           <el-button-group>
             <el-button size="small" :icon="pauseBtnStatus.icon" :title="pauseBtnStatus.title" @click="pauseBtnClicked"
               ref="pauseBtn">
@@ -66,7 +66,7 @@
               </el-collapse>
             </el-tab-pane>
             <el-tab-pane label="Preview" name="preview">
-              <pre style="font-size: 15px" v-html="preview"></pre>
+              <pre style="font-size: 15px;" v-html="preview"></pre>
             </el-tab-pane>
           </el-tabs>
           <el-button type="primary" icon="el-icon-position" circle class="resend" @click="resendBtnClicked"
