@@ -121,7 +121,7 @@ let app = new Vue({
 
 function listenerCallback(requestInfo) {
     requestInfo.getContent((body) => {
-        if (navigator.userAgent.indexOf("Firefox") > -1 || requestInfo._resourceType === 'fetch' || requestInfo._resourceType === 'xhr') {
+        if (!requestInfo._resourceType || requestInfo._resourceType === 'fetch' || requestInfo._resourceType === 'xhr') {
             let request = requestInfo.request;
             let urlPieces = request.url.split('/');
             if (urlPieces[urlPieces.length - 1]) {
