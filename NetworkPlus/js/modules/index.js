@@ -159,4 +159,4 @@ function stopRecord() {
 }
 
 startRecord();
-window.app = app;
+//window.app = app;
