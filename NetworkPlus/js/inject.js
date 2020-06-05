@@ -1,6 +1,6 @@
 (function () {
 	function isSafeHeader(headerName) {
-		let unsafeHeaders =
+		const unsafeHeaders =
 			['Accept-Charset',
 				'Accept-Encoding',
 				'Access-Control-Request-Headers',
