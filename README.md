@@ -2,11 +2,11 @@
 
 ## Devtool for network interception and resending.
  
-1. Open the devtools panel and find the tab with Network+ .
+1. Open the devtools panel and find the tab with "Network+".
 2. Make some HTTP request.
 3. See the log of request and response.
-4. Modify some field like Request Method, URL or Request Payload...
-5. Click the Send button and notice the log.
+4. Modify some field like "Request Method", "URL" or "Request Payload"...
+5. Click the "Send" button and notice the log.
 
 ![screen_recording](assets/screen_recording.gif)
 
