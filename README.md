@@ -5,7 +5,7 @@
 1. Open the devtools panel and find the tab with "Network+".
 2. Make some HTTP request.
 3. See the log of request and response.
-4. Modify some field like "Request Method", "URL" or "Request Payload"...
+4. Modify some fields like "Request Method", "URL" or "Request Payload"...
 5. Click the "Send" button and notice the log.
 
 ![screen_recording](images/screen_recording.gif)
