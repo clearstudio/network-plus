@@ -23,7 +23,7 @@ let app = new Vue({
     },
     computed: {
         searchedTableData: function () {
-            return this.tableData.filter(data => !this.search || data.request.url.toLowerCase().includes(this.search.toLowerCase()))
+            return this.tableData.filter(data => !this.search || data.request.url.toLowerCase().includes(this.search.toLowerCase()));
         }
     },
     watch: {
@@ -40,7 +40,7 @@ let app = new Vue({
             let editUrl = document.getElementById('edit-url').innerText;
             let editMethod = document.getElementById('edit-method').innerText;
             let editRequestHeaders = '';
-            let editRequestHeadersStr = document.getElementById('edit-request-headers').innerText;;
+            let editRequestHeadersStr = document.getElementById('edit-request-headers').innerText;
             let editRequestBody = '';
             let editRequestBodyStr = document.getElementById('edit-request-body').innerText;
 
