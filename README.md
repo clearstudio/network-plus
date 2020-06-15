@@ -1,8 +1,8 @@
 # <img src="images/icon.svg" height="60px"></img> Network+
 
-## Devtool for network interception and resending.
+## DevTools for network recording and resending.
  
-1. Open the devtools panel and find the tab with "Network+".
+1. Open the DevTools panel and find the tab with "Network+".
 2. Make some HTTP request.
 3. See the log of request and response.
 4. Modify some fields like "Request Method", "URL" or "Request Payload"...
