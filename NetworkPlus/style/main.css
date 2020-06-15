@@ -1,3 +1,11 @@
+/* 夜间模式 */
+
+.dark-mode {
+  filter: invert(0.86) hue-rotate(180deg);
+}
+
+/* 滚动条 */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -19,8 +27,14 @@ html {
   overflow: hidden;
 }
 
+body {
+  margin: 0;
+  padding: 8px;
+}
+
 html, body {
   height: 100%;
+  background: #fff;
 }
 
 #app, .el-container {
