@@ -25,7 +25,8 @@ let app = new Vue({
         searchedTableData: function () {
             return this.tableData.filter(data => !this.search || data.request.url.toLowerCase().includes(this.search.toLowerCase()));
         }
-    }, beforeCreate: function () {
+    },
+    beforeCreate: function () {
         if (chrome.devtools.panels.themeName.toLowerCase().includes('dark')) {
             document.body.classList.add('dark-mode');
         }
