@@ -85,6 +85,10 @@ pre {
   outline: none;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 /* 表格只显示一行文字 */
 
 .el-tooltip__popper.is-dark {
