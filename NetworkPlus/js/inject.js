@@ -1,29 +1,30 @@
 (function () {
 	function isSafeHeader(headerName) {
-		const unsafeHeaders =
-			['Accept-Charset',
-				'Accept-Encoding',
-				'Access-Control-Request-Headers',
-				'Access-Control-Request-Method',
-				'Connection',
-				'Content-Length',
-				'Cookie',
-				'Cookie2',
-				'Date',
-				'DNT',
-				'Expect',
-				'Host',
-				'Keep-Alive',
-				'Origin',
-				'Referer',
-				'TE',
-				'Trailer',
-				'Transfer-Encoding',
-				'Upgrade',
-				'User-Agent',
-				'Via',
-				'Sec-.*',
-				'Proxy-.*'];
+		const unsafeHeaders = [
+			'Accept-Charset',
+			'Accept-Encoding',
+			'Access-Control-Request-Headers',
+			'Access-Control-Request-Method',
+			'Connection',
+			'Content-Length',
+			'Cookie',
+			'Cookie2',
+			'Date',
+			'DNT',
+			'Expect',
+			'Host',
+			'Keep-Alive',
+			'Origin',
+			'Referer',
+			'TE',
+			'Trailer',
+			'Transfer-Encoding',
+			'Upgrade',
+			'User-Agent',
+			'Via',
+			'Sec-.*',
+			'Proxy-.*'
+		];
 
 		for (let unsafeHeader of unsafeHeaders) {
 			let reg = new RegExp(`^${unsafeHeader}$`, 'i');
@@ -37,9 +38,9 @@
 	window.networkPlusXhr = function (url, method, headersStr, bodyStr) {
 		let xhr = new XMLHttpRequest();
 		xhr.addEventListener("readystatechange", function () {
-			if (this.readyState === 4) {
-				//console.log(this.responseText);
-			}
+			/* if (this.readyState === 4) {
+				console.log(this.responseText);
+			} */
 		});
 		xhr.open(method, url);
 		let headers = JSON.parse(headersStr);

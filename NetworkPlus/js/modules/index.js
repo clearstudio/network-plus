@@ -47,7 +47,7 @@ let app = new Vue({
             if (isJSON(editRequestHeadersStr)) {
                 editRequestHeaders = JSON.stringify(JSON.parse(editRequestHeadersStr));
             } else {
-                editRequestHeaders = '{}'
+                editRequestHeaders = '{}';
             }
 
             if (isJSON(editRequestBodyStr)) {
@@ -60,8 +60,7 @@ let app = new Vue({
             let escapedFunctionStr = functionStr.replace(/\\"/g, '\\\\\\"');
             chrome.devtools.inspectedWindow.eval(escapedFunctionStr, function (result, isException) {
                 //console.log(isException);
-            }
-            );
+            });
         },
         pauseBtnClicked() {
             if (this.pauseBtnStatus.recording === true) {
@@ -143,7 +142,7 @@ function listenerCallback(requestInfo) {
             });
             response.headers = responseHeaders;
 
-            let data = { 'request': request, 'response': response };
+            let data = { request: request, response: response };
             app.tableData.push(data);
         }
     })
