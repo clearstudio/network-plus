@@ -1,5 +1,4 @@
-import { jsonBeautify } from './json-beautify.js';
-import { isJSON } from './check-json-str.js';
+import { jsonBeautify, headersJsonSort, isJSON } from './utils.js';
 
 let app = new Vue({
     el: '#app',
@@ -84,11 +83,7 @@ let app = new Vue({
             this.url = val.request.url;
             this.method = val.request.method;
             this.status = val.response.status;
-            if (val.request.headers) {
-                this.requestHeader = JSON.stringify(val.request.headers, null, 4);
-            } else {
-                this.requestHeader = '{}';
-            }
+            this.requestHeader = headersJsonSort(val.request.headers);
 
             if (val.request.postData) {
                 let body = val.request.postData.text || '{}';
@@ -102,7 +97,7 @@ let app = new Vue({
             }
 
             if (val.response) {
-                this.responseHeader = JSON.stringify(val.response.headers, null, 4);
+                this.responseHeader = headersJsonSort(val.response.headers);
                 if (typeof val.response.body === 'string') {
                     if (isJSON(val.response.body)) {
                         this.preview = jsonBeautify(JSON.stringify(JSON.parse(val.response.body), null, 4));
