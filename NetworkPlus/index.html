@@ -40,7 +40,7 @@
             </el-table-column>
           </el-table>
         </el-aside>
-        <el-main :style="panelStyle">
+        <el-main :v-show="mainPanel.show">
           <el-tabs v-model="activeTab">
             <el-tab-pane label="Headers" name="headers">
               <el-collapse v-model="activeCollapses">

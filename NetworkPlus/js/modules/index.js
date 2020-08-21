@@ -5,7 +5,7 @@ const app = new Vue({
   el: '#app',
   data() {
     return {
-      panelStyle: { display: 'none' },
+      mainPanel: { show: false },
       pauseBtnStatus: { icon: 'el-icon-video-pause', recording: true, title: 'Stop recording network log' },
       asideWidth: '100%',
       url: '',
@@ -30,7 +30,7 @@ const app = new Vue({
     searchedTableData: function(newSearchedTableData, oldSearchedTableData) {
       if (newSearchedTableData.length === 0) {
         this.asideWidth = '100%'
-        this.panelStyle.display = 'none'
+        this.mainPanel.show = false
       }
     }
   },
@@ -78,7 +78,7 @@ const app = new Vue({
     },
     // 表格行单击
     tableRowClicked(val) {
-      this.panelStyle.display = 'block'
+      this.mainPanel.show = true
       this.asideWidth = '300px'
 
       this.url = val.request.url
