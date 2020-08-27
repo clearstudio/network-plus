@@ -1,4 +1,4 @@
-const isJSON = function(str) {
+export function isJSON(str) {
   if (typeof str === 'string') {
     try {
       const obj = JSON.parse(str)
@@ -13,7 +13,7 @@ const isJSON = function(str) {
   }
 }
 
-const jsonBeautify = function(jsonStr) {
+export function jsonBeautify(jsonStr) {
   jsonStr = jsonStr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   return jsonStr.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
     let cls = 'json-number'
@@ -32,7 +32,7 @@ const jsonBeautify = function(jsonStr) {
   })
 }
 
-const headersJsonSort = function(headers) {
+export function headersJsonSort(headers) {
   if (headers) {
     const sortedHeaders = {}
     Object.keys(headers).sort(function(a, b) { return a.localeCompare(b) }).map(key => {
@@ -43,5 +43,3 @@ const headersJsonSort = function(headers) {
     return '{}'
   }
 }
-
-export { jsonBeautify, headersJsonSort, isJSON }
