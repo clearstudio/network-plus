@@ -1,8 +1,11 @@
 import { jsonBeautify, headersJsonSort, isJSON } from './utils.js'
-
+import resizePanel from './dragPanel.js'
 // eslint-disable-next-line no-undef
 const app = new Vue({
   el: '#app',
+  mounted() {
+    resizePanel(this.$refs.dragPanel.$el, this.$refs.resizeBar, this.$refs.panelLeft.$el, this.$refs.panelRight.$el)
+  },
   data() {
     return {
       mainPanel: { show: false },
