@@ -40,7 +40,7 @@
             </el-table-column>
           </el-table>
         </el-aside>
-        <div ref="resizeBar" style="cursor: w-resize;width: 2px; height: calc(100% - 40px); top: 40px; background-color: #E4E7ED;"></div>
+        <div ref="resizeBar" style="cursor: ew-resize;width: 2px; height: calc(100% - 40px); top: 40px; border-left:solid #E4E7ED 2px;"></div>
         <el-main :v-show="mainPanel.show" ref="panelRight">
           <el-tabs v-model="activeTab">
             <el-tab-pane label="Headers" name="headers">
