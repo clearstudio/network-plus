@@ -50,7 +50,9 @@ html, body {
   width: 0;
   padding-top: 0;
   padding-bottom: 0;
+  padding-right: 0;
   height: 95%;
+  overflow: hidden;
 }
 
 .json-key {
@@ -102,6 +104,10 @@ pre {
   font-weight: bold;
 }
 
+.el-tabs {
+  height: 95%;
+}
+
 .el-tabs__header {
   position: fixed;
   z-index: 999;
@@ -111,6 +117,12 @@ pre {
 
 .el-tabs__content {
   padding-top: 39px;
+  height: 100%;
+}
+
+.el-tab-pane {
+  overflow:auto;
+  height:100%;
 }
 
 .resend {
