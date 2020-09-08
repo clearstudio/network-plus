@@ -82,7 +82,7 @@ const app = new Vue({
     // 表格行单击
     tableRowClicked(val) {
       this.mainPanel.show = true
-      this.asideWidth = '312px'
+      this.asideWidth = '313px'
 
       this.url = val.request.url
       this.method = val.request.method
