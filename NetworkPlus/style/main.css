@@ -126,7 +126,6 @@ pre {
 }
 
 .resend {
-  z-index: 1;
   position: fixed !important;
   right: 80px !important;
   bottom: 80px !important;
