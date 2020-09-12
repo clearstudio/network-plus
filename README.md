@@ -1,4 +1,4 @@
-# <img src="images/icon.svg" height="60px"></img> Network+
+# <img src="images/icon.svg" height="60px"/> Network+
 
 ## DevTools for network recording and resending.
  
@@ -11,5 +11,4 @@
 ![screen_recording](images/screen_recording.gif)
 
 
-[<img alt="Chrome Webstore" src="https://raw.githubusercontent.com/GoogleChrome/webstore-docs/master/images/ChromeWebStore_BadgeWBorder_v2_206x58.png" height="45" />](https://chrome.google.com/webstore/detail/network%2B/nfeeojenagochlldompjclkogikjlhlf) | [<img alt="Microsoft Edge" src="https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png" height="45" />](https://microsoftedge.microsoft.com/addons/detail/egffgfkehfhpgdbbghodemkigancefap) | [![Mozilla Addons](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_2.png)](https://addons.mozilla.org/firefox/addon/networkplus/)
-|---|-----|---|
+[<img alt="Chrome Webstore" src="https://raw.githubusercontent.com/GoogleChrome/webstore-docs/master/images/ChromeWebStore_BadgeWBorder_v2_206x58.png" height="45" />](https://chrome.google.com/webstore/detail/network%2B/nfeeojenagochlldompjclkogikjlhlf)  [<img alt="Microsoft Edge" src="https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png" height="45" />](https://microsoftedge.microsoft.com/addons/detail/egffgfkehfhpgdbbghodemkigancefap)  [![Mozilla Addons](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_2.png)](https://addons.mozilla.org/firefox/addon/networkplus/)
