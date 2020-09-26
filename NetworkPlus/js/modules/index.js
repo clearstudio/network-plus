@@ -26,12 +26,12 @@ const app = new Vue({
     }
   },
   computed: {
-    searchedTableData: function() {
+    searchedTableData() {
       return this.tableData.filter(data => !this.search || data.request.url.toLowerCase().includes(this.search.toLowerCase()))
     }
   },
   watch: {
-    searchedTableData: function(newSearchedTableData) {
+    searchedTableData(newSearchedTableData) {
       if (newSearchedTableData.length === 0) {
         this.asideWidth = '100%'
         this.mainPanel.show = false
@@ -62,7 +62,7 @@ const app = new Vue({
 
       const functionStr = `__NETWORK_PLUS_XHR__('${editUrl}','${editMethod}','${editRequestHeaders}','${editRequestBody}')`
       const escapedFunctionStr = functionStr.replace(/\\"/g, '\\\\\\"')
-      chrome.devtools.inspectedWindow.eval(escapedFunctionStr, function(result, isException) {
+      chrome.devtools.inspectedWindow.eval(escapedFunctionStr, (result, isException) => {
       // console.log(result, isException)
       })
     },
