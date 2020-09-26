@@ -1,15 +1,16 @@
 import { jsonBeautify, headersJsonSort, isJSON } from './utils.js'
-import resizePanel from './dragPanel.js'
-// eslint-disable-next-line no-undef
+import dragAndResize from './resizablePanel.js'
+
 const app = new Vue({
   el: '#app',
   mounted() {
-    resizePanel(this.$refs.dragPanel.$el, this.$refs.resizeBar, this.$refs.panelLeft.$el, this.$refs.panelRight.$el)
+    dragAndResize(this.$refs.resizablePanel.$el, this.$refs.resizeBar, this.$refs.panelLeft.$el, this.$refs.panelRight.$el)
   },
   data() {
     return {
       mainPanel: { show: false },
       pauseBtnStatus: { icon: 'el-icon-video-pause', recording: true, title: 'Stop recording network log' },
+      pauseBtnClickedStatus: { icon: 'el-icon-video-play', recording: false, title: 'Start recording network log' },
       asideWidth: '100%',
       url: '',
       method: '',
@@ -30,7 +31,7 @@ const app = new Vue({
     }
   },
   watch: {
-    searchedTableData: function(newSearchedTableData, oldSearchedTableData) {
+    searchedTableData: function(newSearchedTableData) {
       if (newSearchedTableData.length === 0) {
         this.asideWidth = '100%'
         this.mainPanel.show = false
@@ -59,7 +60,7 @@ const app = new Vue({
         editRequestBody = editRequestBodyStr === '\n' ? '{}' : editRequestBodyStr
       }
 
-      const functionStr = `networkPlusXhr('${editUrl}','${editMethod}','${editRequestHeaders}','${editRequestBody}')`
+      const functionStr = `__NETWORK_PLUS_XHR__('${editUrl}','${editMethod}','${editRequestHeaders}','${editRequestBody}')`
       const escapedFunctionStr = functionStr.replace(/\\"/g, '\\\\\\"')
       chrome.devtools.inspectedWindow.eval(escapedFunctionStr, function(result, isException) {
         // console.log(isException);
@@ -67,9 +68,7 @@ const app = new Vue({
     },
     pauseBtnClicked() {
       if (this.pauseBtnStatus.recording === true) {
-        this.pauseBtnStatus.icon = 'el-icon-video-play'
-        this.pauseBtnStatus.recording = false
-        this.pauseBtnStatus.title = 'Start recording network log'
+        this.pauseBtnStatus = this.pauseBtnClickedStatus
         stopRecord()
       } else {
         this.pauseBtnStatus = this.$options.data().pauseBtnStatus
@@ -121,11 +120,7 @@ function listenerCallback(requestInfo) {
     if (!requestInfo._resourceType || requestInfo._resourceType === 'fetch' || requestInfo._resourceType === 'xhr') {
       const request = requestInfo.request
       const urlPieces = request.url.split('/')
-      if (urlPieces[urlPieces.length - 1]) {
-        request.name = urlPieces[urlPieces.length - 1]
-      } else {
-        request.name = urlPieces[urlPieces.length - 2] + '/'
-      }
+      request.name = urlPieces[urlPieces.length - 1] || urlPieces[urlPieces.length - 2] + '/'
       const requestHeaders = {}
       request.headers.forEach(header => {
         requestHeaders[header.name] = header.value

@@ -35,7 +35,7 @@
     return true
   }
 
-  window.networkPlusXhr = function(url, method, headersStr, bodyStr) {
+  window.__NETWORK_PLUS_XHR__ = function(url, method, headersStr, bodyStr) {
     const xhr = new XMLHttpRequest()
     xhr.addEventListener('readystatechange', function() {
       /* if (this.readyState === 4) {
