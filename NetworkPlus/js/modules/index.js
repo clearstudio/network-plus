@@ -63,7 +63,7 @@ const app = new Vue({
       const functionStr = `__NETWORK_PLUS_XHR__('${editUrl}','${editMethod}','${editRequestHeaders}','${editRequestBody}')`
       const escapedFunctionStr = functionStr.replace(/\\"/g, '\\\\\\"')
       chrome.devtools.inspectedWindow.eval(escapedFunctionStr, function(result, isException) {
-        // console.log(isException);
+      // console.log(result, isException)
       })
     },
     pauseBtnClicked() {
@@ -135,7 +135,7 @@ function listenerCallback(requestInfo) {
       })
       response.headers = responseHeaders
 
-      const data = { request: request, response: response }
+      const data = { request, response }
       app.tableData.push(data)
     }
   })
