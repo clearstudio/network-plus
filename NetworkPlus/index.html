@@ -68,7 +68,7 @@
               </el-collapse>
             </el-tab-pane>
             <el-tab-pane label="Preview" name="preview">
-              <pre style="font-size: 15px;" v-html="preview"></pre>
+              <pre id="preview-pre" v-html="preview"></pre>
             </el-tab-pane>
           </el-tabs>
           <el-button type="primary" icon="el-icon-position" circle class="resend" @click="resendBtnClicked"

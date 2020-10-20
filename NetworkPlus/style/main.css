@@ -53,6 +53,7 @@ html, body {
   padding-right: 0;
   height: 95%;
   overflow: hidden;
+  border-bottom: 1px solid #EBEEF5;
 }
 
 .json-key {
@@ -121,8 +122,19 @@ pre {
 }
 
 .el-tab-pane {
-  overflow:auto;
-  height:100%;
+  overflow: auto;
+  height: 100%;
+}
+
+#pane-preview {
+  overflow-y: hidden;
+}
+
+#preview-pre {
+  font-size: 15px;
+  height: calc(100% - 32.7px);
+  margin: 0;
+  padding: 15px 0;
 }
 
 .resend {
