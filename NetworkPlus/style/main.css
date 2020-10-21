@@ -85,8 +85,14 @@ pre {
   font-family: none;
 }
 
+.show-editable:hover {
+  background: url(../img/pencil.svg) no-repeat top right 6px;
+  background-position-y: 4px;
+}
+
 [contentEditable]:focus {
   outline: none;
+  background-color: #ecf5ff;
 }
 
 [v-cloak] {

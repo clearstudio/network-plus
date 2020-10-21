@@ -46,25 +46,33 @@
           <el-tabs v-model="activeTab">
             <el-tab-pane label="Headers" name="headers">
               <el-collapse v-model="activeCollapses">
-                <el-collapse-item name="General">
-                  <template slot="title">
-                    <span class="colla">General</span>
-                  </template>
-                  <label>Request URL: </label><span contentEditable id="edit-url" v-text="url"
-                    spellcheck="false"></span><br>
-                  <label>Request Method: </label><span contentEditable id="edit-method" v-text="method"
-                    spellcheck="false"></span><br>
-                  <label>Status Code: </label><span>{{status}}</span>
+
+                <el-collapse-item title="General" name="General">
+                  <div class="show-editable">
+                    <label>Request URL: </label><span contentEditable id="edit-url" v-text="url"
+                      spellcheck="false"></span><br>
+                    <label>Request Method: </label><span contentEditable id="edit-method" v-text="method"
+                      spellcheck="false"></span><br>
+                    <label>Status Code: </label><span>{{status}}</span>
+                  </div>
                 </el-collapse-item>
+
+                <el-collapse-item title="Request Payload" name="Request Payload">
+                  <div class="show-editable">
+                    <pre contentEditable id="edit-request-body" v-text="requestPayload" spellcheck="false"></pre>
+                  </div>
+                </el-collapse-item>
+
+                <el-collapse-item title="Request Headers" name="Request Headers">
+                  <div class="show-editable">
+                    <pre contentEditable id="edit-request-headers" v-text="requestHeader" spellcheck="false"></pre>
+                  </div>
+                </el-collapse-item>
+
                 <el-collapse-item title="Response Headers" name="Response Headers">
                   <pre>{{responseHeader}}</pre>
                 </el-collapse-item>
-                <el-collapse-item title="Request Headers" name="Request Headers">
-                  <pre contentEditable id="edit-request-headers" v-text="requestHeader" spellcheck="false"></pre>
-                </el-collapse-item>
-                <el-collapse-item title="Request Payload" name="Request Payload">
-                  <pre contentEditable id="edit-request-body" v-text="requestPayload" spellcheck="false"></pre>
-                </el-collapse-item>
+
               </el-collapse>
             </el-tab-pane>
             <el-tab-pane label="Preview" name="preview">
