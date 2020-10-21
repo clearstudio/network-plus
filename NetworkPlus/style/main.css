@@ -92,7 +92,7 @@ pre {
 
 [contentEditable]:focus {
   outline: none;
-  background-color: #ecf5ff;
+  background-color: #ECF5FF;
 }
 
 [v-cloak] {
