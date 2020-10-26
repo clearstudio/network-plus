@@ -86,14 +86,14 @@ pre {
 }
 
 .show-editable:hover {
-  background: url(../img/pencil.svg) no-repeat top right 6px;
-  background-position-y: 4px;
+  background: url(../img/pencil.svg) no-repeat top right 8px;
+  background-position-y: 5px;
 }
 
 [contentEditable]:focus {
   outline: none;
   background-color: #ECF5FF;
-  transition: background-color .2s cubic-bezier(.645,.045,.355,1);
+  transition: background-color .2s cubic-bezier(.645, .045, .355, 1);
 }
 
 [v-cloak] {
