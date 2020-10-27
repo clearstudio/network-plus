@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  'globals': { 'chrome': true },
+  'globals': { 'chrome': true, 'Vue': true },
   parserOptions: {
     parser: 'babel-eslint',
     sourceType: 'module'

@@ -15,7 +15,7 @@ export function isJSON(str) {
 
 export function jsonBeautify(jsonStr) {
   jsonStr = jsonStr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  return jsonStr.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+  return jsonStr.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, match => {
     let cls = 'json-number'
     if (/^"/.test(match)) {
       if (/:$/.test(match)) {
@@ -35,7 +35,7 @@ export function jsonBeautify(jsonStr) {
 export function headersJsonSort(headers) {
   if (headers) {
     const sortedHeaders = {}
-    Object.keys(headers).sort(function(a, b) { return a.localeCompare(b) }).map(key => {
+    Object.keys(headers).sort((a, b) => a.localeCompare(b)).forEach(key => {
       sortedHeaders[key] = headers[key]
     })
     return JSON.stringify(sortedHeaders, null, 4)

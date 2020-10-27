@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  <script src="js/themes.js"></script>
   <div id="app" v-cloak>
     <el-container>
       <el-header>
@@ -27,7 +26,7 @@
           </el-button-group>
         </div>
       </el-header>
-      <el-container ref="dragPanel">
+      <el-container ref="resizablePanel">
         <el-aside :width="asideWidth" ref="panelLeft">
           <el-table :data="searchedTableData" height="95%" highlight-current-row @row-click="tableRowClicked">
             <div slot="empty">Recording network activity...<br>
@@ -40,34 +39,44 @@
             </el-table-column>
           </el-table>
         </el-aside>
-        <div ref="resizeBar" style="cursor: ew-resize;width: 3px; height: calc(100% - 40px); top: 40px; border-left:solid #E4E7ED 2px;"></div>
+        <div ref="resizeBar"
+          style="cursor: ew-resize;width: 3px; height: calc(100% - 40px); top: 40px; border-left:solid #E4E7ED 2px;">
+        </div>
         <el-main v-show="mainPanel.show" ref="panelRight">
           <el-tabs v-model="activeTab">
             <el-tab-pane label="Headers" name="headers">
               <el-collapse v-model="activeCollapses">
-                <el-collapse-item name="General">
-                  <template slot="title">
-                    <span class="colla">General</span>
-                  </template>
-                  <label>Request URL: </label><span contentEditable id="edit-url" v-text="url"
-                    spellcheck="false"></span><br>
-                  <label>Request Method: </label><span contentEditable id="edit-method" v-text="method"
-                    spellcheck="false"></span><br>
-                  <label>Status Code: </label><span>{{status}}</span>
+
+                <el-collapse-item title="General" name="General">
+                  <div class="show-editable">
+                    <label>Request URL: </label><span contentEditable id="edit-url" v-text="url"
+                      spellcheck="false"></span><br>
+                    <label>Request Method: </label><span contentEditable id="edit-method" v-text="method"
+                      spellcheck="false"></span><br>
+                    <label>Status Code: </label><span>{{status}}</span>
+                  </div>
                 </el-collapse-item>
+
+                <el-collapse-item title="Request Payload" name="Request Payload">
+                  <div class="show-editable">
+                    <pre contentEditable id="edit-request-body" v-text="requestPayload" spellcheck="false"></pre>
+                  </div>
+                </el-collapse-item>
+
+                <el-collapse-item title="Request Headers" name="Request Headers">
+                  <div class="show-editable">
+                    <pre contentEditable id="edit-request-headers" v-text="requestHeader" spellcheck="false"></pre>
+                  </div>
+                </el-collapse-item>
+
                 <el-collapse-item title="Response Headers" name="Response Headers">
                   <pre>{{responseHeader}}</pre>
                 </el-collapse-item>
-                <el-collapse-item title="Request Headers" name="Request Headers">
-                  <pre contentEditable id="edit-request-headers" v-text="requestHeader" spellcheck="false"></pre>
-                </el-collapse-item>
-                <el-collapse-item title="Request Payload" name="Request Payload">
-                  <pre contentEditable id="edit-request-body" v-text="requestPayload" spellcheck="false"></pre>
-                </el-collapse-item>
+
               </el-collapse>
             </el-tab-pane>
             <el-tab-pane label="Preview" name="preview">
-              <pre style="font-size: 15px;" v-html="preview"></pre>
+              <pre id="preview-pre" v-html="preview"></pre>
             </el-tab-pane>
           </el-tabs>
           <el-button type="primary" icon="el-icon-position" circle class="resend" @click="resendBtnClicked"
@@ -76,10 +85,10 @@
       </el-container>
     </el-container>
   </div>
+  <script src="js/themes.js"></script>
   <script src="js/lib/vue.min.js"></script>
   <script src="js/lib/element-ui.js"></script>
   <script type="module" src="js/modules/index.js"></script>
-
 </body>
 
 </html>

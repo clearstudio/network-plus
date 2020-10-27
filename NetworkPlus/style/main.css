@@ -53,6 +53,7 @@ html, body {
   padding-right: 0;
   height: 95%;
   overflow: hidden;
+  border-bottom: 1px solid #EBEEF5;
 }
 
 .json-key {
@@ -84,8 +85,15 @@ pre {
   font-family: none;
 }
 
+.show-editable:hover {
+  background: url(../img/pencil.svg) no-repeat top right 8px;
+  background-position-y: 5px;
+}
+
 [contentEditable]:focus {
   outline: none;
+  background-color: #ECF5FF;
+  transition: background-color .2s cubic-bezier(.645, .045, .355, 1);
 }
 
 [v-cloak] {
@@ -121,8 +129,19 @@ pre {
 }
 
 .el-tab-pane {
-  overflow:auto;
-  height:100%;
+  overflow: auto;
+  height: 100%;
+}
+
+#pane-preview {
+  overflow-y: hidden;
+}
+
+#preview-pre {
+  font-size: 15px;
+  height: calc(100% - 32.7px);
+  margin: 0;
+  padding: 15px 0;
 }
 
 .resend {
