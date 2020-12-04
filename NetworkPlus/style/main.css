@@ -94,10 +94,18 @@ pre {
   background-position-y: 5px;
 }
 
-[contentEditable]:focus {
+[contentEditable]:focus, .el-textarea__inner {
   outline: none;
   background-color: #ECF5FF;
   transition: background-color .2s cubic-bezier(.645, .045, .355, 1);
+}
+
+.el-textarea__inner {
+  border: none;
+  padding: 2px 0 0 0;
+  font-size: 13px;
+  font-family: inherit;
+  color: #303133;
 }
 
 [v-cloak] {

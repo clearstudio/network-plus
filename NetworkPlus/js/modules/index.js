@@ -41,7 +41,7 @@ const app = new Vue({
   methods: {
     // 发送按钮
     resendBtnClicked() {
-      const editUrl = document.getElementById('edit-url').innerText
+      const editUrl = this.url
       const editMethod = document.getElementById('edit-method').innerText
       let editRequestHeaders = ''
       const editRequestHeadersStr = document.getElementById('edit-request-headers').innerText

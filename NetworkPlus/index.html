@@ -28,8 +28,7 @@
       </el-header>
       <el-container ref="resizablePanel">
         <el-aside :width="asideWidth" ref="panelLeft">
-          <el-table :data="searchedTableData" height="100%" highlight-current-row
-            @row-click="tableRowClicked">
+          <el-table :data="searchedTableData" height="100%" highlight-current-row @row-click="tableRowClicked">
             <div slot="empty">Recording network activity...<br>
               Perform a request or hit <span style="font-weight: bold;">Ctrl</span> + <span
                 style="font-weight: bold;">R</span> to record the refresh.</div>
@@ -50,8 +49,10 @@
 
                 <el-collapse-item title="General" name="General">
                   <div class="show-editable">
-                    <label>Request URL: </label><span contentEditable id="edit-url" v-text="url"
-                      spellcheck="false"></span><br>
+                    <label>Request URL: </label>
+                    <el-input type="textarea" autosize id="edit-url" v-model="url" resize="none"
+                      style="vertical-align:top; width: calc(100% - 150px);" spellcheck="false">
+                    </el-input><br>
                     <label>Request Method: </label><span contentEditable id="edit-method" v-text="method"
                       spellcheck="false"></span><br>
                     <label>Status Code: </label><span>{{status}}</span>
