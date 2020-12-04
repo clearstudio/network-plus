@@ -94,7 +94,7 @@ pre {
   background-position-y: 5px;
 }
 
-[contentEditable]:focus, .el-textarea__inner {
+[contentEditable]:focus, .el-textarea__inner:focus {
   outline: none;
   background-color: #ECF5FF;
   transition: background-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -102,10 +102,11 @@ pre {
 
 .el-textarea__inner {
   border: none;
-  padding: 2px 0 0 0;
+  padding: 2px 0;
   font-size: 13px;
   font-family: inherit;
   color: #303133;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 [v-cloak] {
@@ -137,7 +138,7 @@ pre {
 
 .el-tabs__content {
   padding-top: 39px;
-  height: 100%;
+  height: calc(100% - 37.8px);
 }
 
 .el-tab-pane {
@@ -151,7 +152,7 @@ pre {
 
 #preview-pre {
   font-size: 15px;
-  height: calc(100% - 69.2px);
+  height: calc(100% - 31.4px);
   margin: 0;
   padding: 15px 0;
 }
