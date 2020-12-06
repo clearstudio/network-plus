@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Network+",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"description": "DevTools for network recording and resending.",
 	"icons": {
 		"16": "img/icon_16.png",
