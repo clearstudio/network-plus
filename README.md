@@ -1,6 +1,6 @@
 # <img src="images/icon.svg" height="60px"/> Network+
 
-## DevTools for network recording and resending.
+## DevTools for network recording, modification and resending.
  
 1. Open the DevTools panel and find the tab with "Network+".
 2. Make some HTTP request.

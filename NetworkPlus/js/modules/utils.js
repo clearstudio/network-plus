@@ -31,15 +31,3 @@ export function jsonBeautify(jsonStr) {
     return '<span class="' + cls + '">' + match + '</span>'
   })
 }
-
-export function headersJsonSort(headers) {
-  if (headers) {
-    const sortedHeaders = {}
-    Object.keys(headers).sort((a, b) => a.localeCompare(b)).forEach(key => {
-      sortedHeaders[key] = headers[key]
-    })
-    return JSON.stringify(sortedHeaders, null, 4)
-  } else {
-    return '{}'
-  }
-}

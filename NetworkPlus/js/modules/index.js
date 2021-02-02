@@ -1,4 +1,4 @@
-import { jsonBeautify, headersJsonSort, isJSON } from './utils.js'
+import { jsonBeautify, isJSON } from './utils.js'
 import dragAndResize from './resizablePanel.js'
 
 const app = new Vue({
@@ -15,8 +15,8 @@ const app = new Vue({
       url: '',
       method: '',
       status: '',
-      responseHeader: '{}',
-      requestHeader: '{}',
+      responseHeader: '',
+      requestHeader: '',
       requestPayload: '{}',
       preview: '',
       activeTab: 'headers',
@@ -43,16 +43,9 @@ const app = new Vue({
     resendBtnClicked() {
       const editUrl = this.url
       const editMethod = document.getElementById('edit-method').innerText
-      let editRequestHeaders = ''
       const editRequestHeadersStr = document.getElementById('edit-request-headers').innerText
       let editRequestBody = ''
       const editRequestBodyStr = document.getElementById('edit-request-body').innerText
-
-      if (isJSON(editRequestHeadersStr)) {
-        editRequestHeaders = JSON.stringify(JSON.parse(editRequestHeadersStr))
-      } else {
-        editRequestHeaders = '{}'
-      }
 
       if (isJSON(editRequestBodyStr)) {
         editRequestBody = JSON.stringify(JSON.parse(editRequestBodyStr))
@@ -60,10 +53,10 @@ const app = new Vue({
         editRequestBody = editRequestBodyStr === '\n' ? '{}' : editRequestBodyStr
       }
 
-      const functionStr = `__NETWORK_PLUS_XHR__('${editUrl}','${editMethod}','${editRequestHeaders}','${editRequestBody}')`
-      const escapedFunctionStr = functionStr.replace(/\\"/g, '\\\\\\"')
+      const functionStr = `__NETWORK_PLUS_XHR__('${editUrl}','${editMethod}','${editRequestHeadersStr}','${editRequestBody}')`
+      const escapedFunctionStr = functionStr.replace(/\n/g, '\\n').replace(/\\"/g, '\\\\\\"')
       chrome.devtools.inspectedWindow.eval(escapedFunctionStr, (result, isException) => {
-      // console.log(result, isException)
+        // console.log(result, isException)
       })
     },
     pauseBtnClicked() {
@@ -86,7 +79,7 @@ const app = new Vue({
       this.url = val.request.url
       this.method = val.request.method
       this.status = val.response.status
-      this.requestHeader = headersJsonSort(val.request.headers)
+      this.requestHeader = val.request.headers
 
       if (val.request.postData) {
         const body = val.request.postData.text || '{}'
@@ -100,7 +93,7 @@ const app = new Vue({
       }
 
       if (val.response) {
-        this.responseHeader = headersJsonSort(val.response.headers)
+        this.responseHeader = val.response.headers
         if (typeof val.response.body === 'string') {
           if (isJSON(val.response.body)) {
             this.preview = jsonBeautify(JSON.stringify(JSON.parse(val.response.body), null, 4))
@@ -121,17 +114,17 @@ function listenerCallback(requestInfo) {
       const request = requestInfo.request
       const urlPieces = request.url.split('/')
       request.name = urlPieces[urlPieces.length - 1] || urlPieces[urlPieces.length - 2] + '/'
-      const requestHeaders = {}
-      request.headers.forEach(header => {
-        requestHeaders[header.name] = header.value
+      let requestHeaders = ''
+      request.headers.sort((a, b) => a.name.localeCompare(b.name)).forEach(header => {
+        requestHeaders += `${header.name}: ${header.value}\n`
       })
       request.headers = requestHeaders
 
       const response = requestInfo.response
       response.body = body
-      const responseHeaders = {}
-      response.headers.forEach(header => {
-        responseHeaders[header.name] = header.value
+      let responseHeaders = ''
+      response.headers.sort((a, b) => a.name.localeCompare(b.name)).forEach(header => {
+        responseHeaders += `${header.name}: ${header.value}\n`
       })
       response.headers = responseHeaders
 
