@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "Network+",
-	"version": "1.1.8",
-	"description": "DevTools for network recording and resending.",
+	"version": "1.2.0",
+	"description": "DevTools for network recording, editing and resending.",
 	"icons": {
 		"16": "img/icon_16.png",
 		"48": "img/icon_48.png",
@@ -30,8 +30,7 @@
 	"permissions": [
 		"webRequest",
 		"webRequestBlocking",
-		"http://*/*",
-		"https://*/*"
+		"*://*/*"
 	],
 	"homepage_url": "https://clear.studio",
 	"devtools_page": "devtools.html"

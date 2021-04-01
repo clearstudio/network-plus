@@ -1,4 +1,4 @@
-import { jsonBeautify, isJSON } from './utils.js'
+import { jsonBeautify, isJson } from './utils.js'
 import dragAndResize from './resizablePanel.js'
 
 const app = new Vue({
@@ -47,7 +47,7 @@ const app = new Vue({
       let editRequestBody = ''
       const editRequestBodyStr = document.getElementById('edit-request-body').innerText
 
-      if (isJSON(editRequestBodyStr)) {
+      if (isJson(editRequestBodyStr)) {
         editRequestBody = JSON.stringify(JSON.parse(editRequestBodyStr))
       } else {
         editRequestBody = editRequestBodyStr === '\n' ? '{}' : editRequestBodyStr
@@ -83,7 +83,7 @@ const app = new Vue({
 
       if (val.request.postData) {
         const body = val.request.postData.text || '{}'
-        if (isJSON(body)) {
+        if (isJson(body)) {
           this.requestPayload = JSON.stringify(JSON.parse(body), null, 4)
         } else {
           this.requestPayload = body
@@ -95,7 +95,7 @@ const app = new Vue({
       if (val.response) {
         this.responseHeader = val.response.headers
         if (typeof val.response.body === 'string') {
-          if (isJSON(val.response.body)) {
+          if (isJson(val.response.body)) {
             this.preview = jsonBeautify(JSON.stringify(JSON.parse(val.response.body), null, 4))
           } else {
             this.preview = val.response.body
