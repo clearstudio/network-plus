@@ -22,8 +22,7 @@
     'User-Agent',
     'Via',
     'Sec-.*',
-    'Proxy-.*',
-    ':*'
+    'Proxy-.*'
   ]
 
   function isSafeHeader(headerName) {
@@ -40,7 +39,7 @@
     const lines = text.split('\n')
     const arr = []
     lines.forEach(line => {
-      if (line.trim()) {
+      if (line.trim() && !line.startsWith(':')) {
         const json = {}
         const name = line.split(/[ ]*:[ ]*/, 1)[0]
         json.name = name
