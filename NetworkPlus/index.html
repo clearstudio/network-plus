@@ -32,7 +32,7 @@
             <div slot="empty">Recording network activity...<br>
               Perform a request or hit <span style="font-weight: bold;">Ctrl</span> + <span
                 style="font-weight: bold;">R</span> to record the refresh.</div>
-            <el-table-column prop="name" label="Name" :show-overflow-tooltip="true">
+            <el-table-column prop="name" label="Name" :show-overflow-tooltip="true" class-name="col-url">
               <template slot-scope="scope">
                 <span :title="scope.row.request.url">{{scope.row.request.name}}</span>
               </template>

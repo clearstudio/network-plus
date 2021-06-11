@@ -119,6 +119,12 @@ pre {
   display: none !important;
 }
 
+/* 表格 url 列 */
+
+.col-url {
+  cursor: pointer;
+}
+
 /* 面板标题 */
 
 .el-collapse-item__header {
