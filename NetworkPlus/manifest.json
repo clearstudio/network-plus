@@ -28,8 +28,6 @@
 		"js/inject.js"
 	],
 	"permissions": [
-		"webRequest",
-		"webRequestBlocking",
 		"*://*/*"
 	],
 	"homepage_url": "https://clear.studio",
