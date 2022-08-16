@@ -6,7 +6,7 @@ function injectCustomJs(jsPath) {
   jsPath = jsPath || 'js/inject.js'
   const temp = document.createElement('script')
   temp.setAttribute('type', 'text/javascript')
-  temp.src = chrome.extension.getURL(jsPath)
+  temp.src = chrome.runtime.getURL(jsPath)
   temp.onload = function() {
     this.parentNode.removeChild(this)
   }
