@@ -226,12 +226,6 @@ export default {
 </script>
 
   <style>
-  /* 夜间模式 */
-  
-  .dark-mode {
-      filter: invert(0.86) hue-rotate(180deg);
-  }
-  
   /* 滚动条 */
   
   ::-webkit-scrollbar {
