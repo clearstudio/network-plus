@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This project is currently unmaintained. For alternatives, refer to https://github.com/lustan/XApi .
+
 # <img src="images/icon.svg" height="60px"/> Network+
 
 ## DevTools for network recording, editing and resending.
